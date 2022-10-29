@@ -16,10 +16,12 @@ export default class Sukses extends Component {
         // Mapping, biar bisa dihapus semua isi JSON Keranjangs nya
         keranjangs.map((item) => {
             return axios
-                  .delete(API_URL + 'keranjangs/' + item.id) //Method delete Json Placeholder
-                  .catch((err) => console.log('Error',err)) 
-            })
-              
+                  .delete(API_URL + 'keranjangs/' + item.id)
+                  .then((res) => console.log(res.data)) //Method delete Json Placeholder
+                   
+          
+      })
+          
       })
       .catch((err) => {
         // handle error

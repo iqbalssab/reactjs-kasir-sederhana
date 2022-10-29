@@ -3,6 +3,9 @@ import {Row, Col, ListGroup, Badge} from 'react-bootstrap'
 import { numberWithCommas } from '../utils/utils';
 import ModalKeranjang from './ModalKeranjang';
 import TotalBayar  from './TotalBayar';
+import axios from 'axios';
+import { API_URL } from '../utils/constant';
+import swal from 'sweetalert';
 
 
 
@@ -15,47 +18,100 @@ export default class Hasil extends Component {
        keranjangDetail : false,
        jumlah : 0,
        keterangan : '',
+       totalHarga: 0,
     }
   }
 
+  // Ketika Modal dibuka
   handleShow = (menuKeranjang) => {
     this.setState({
       showModal : true,
       keranjangDetail : menuKeranjang,
       jumlah : menuKeranjang.jumlah,
-      keterangan : menuKeranjang.keterangan
+      keterangan : menuKeranjang.keterangan,
+      totalHarga: menuKeranjang.total_harga,
     })
   }
 
+  // Ketika modal ditutup
   handleClose = () => {
     this.setState({
       showModal : false,
     })
   }
 
+  // Ketika Klik tombol (+)
   tambah = () => {
     this.setState({
-      jumlah : this.state.jumlah + 1
+      jumlah : this.state.jumlah + 1,
+      totalHarga: this.state.keranjangDetail.product.harga*(this.state.jumlah + 1)
     })
   }
   
+  // Ketika Klik tombol (-)
   kurang = () => {
     if(this.state.jumlah > 1){
       this.setState({
-        jumlah : this.state.jumlah - 1 
+        jumlah : this.state.jumlah - 1,
+        totalHarga: this.state.keranjangDetail.product.harga*(this.state.jumlah - 1) 
       })
     }
   }
 
+  // Ketika Memasukkan Value di TextArea
   changeHandler = (event) => {
     this.setState({
       keterangan : event.target.value,
     })
   }
 
+  // Ketika tombol save di klik
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Keterangan :', this.state.keterangan);
+    
+    const data = {
+      jumlah: this.state.jumlah,
+      total_harga: this.state.totalHarga,
+      product: this.state.keranjangDetail.product,
+      keterangan: this.state.keterangan,
+    }
+    axios
+      .put(API_URL + "keranjangs/"+this.state.keranjangDetail.id, data)
+      .then((res) => {
+        // handle success
+        swal({
+          title: "Update Pesanan!",
+          text: "Anda memesan " + data.product.nama,
+          icon: "success",
+        });
+      })
+      .catch((err) => {
+        // handle error
+        console.log(err);
+      });
+
+      this.handleClose();
+  }
+  
+  // Ketika tombol save di klik
+  hapusPesanan = (id) => {
+    
+    axios
+      .delete(API_URL + "keranjangs/"+id)
+      .then((res) => {
+        // handle success
+        swal({
+          title: "Hapus Pesanan!",
+          text: "Sukses Hapus Pesanan "+ this.state.keranjangDetail.product.nama,
+          icon: "success",
+        });
+      })
+      .catch((err) => {
+        // handle error
+        console.log(err);
+      });
+
+      this.handleClose();
   }
 
   render() {
@@ -65,9 +121,9 @@ export default class Hasil extends Component {
         <h4> <strong>Hasil</strong> </h4>
         <hr />
           {keranjangs.length !== 0 && (
-          <ListGroup variant="flush">
+          <ListGroup variant="flush" className="menu-wrapper">
             {keranjangs.map((menuKeranjang) => (
-            <ListGroup.Item key={menuKeranjang.id} onClick={() => this.handleShow(menuKeranjang)}>
+            <ListGroup.Item key={menuKeranjang.id} onClick={() => this.handleShow(menuKeranjang)} className="list-menu">
             <Row>
               <Col xs={2}>
                 <h4>
@@ -96,6 +152,7 @@ export default class Hasil extends Component {
             kurang={this.kurang} 
             changeHandler={this.changeHandler}
             handleSubmit={this.handleSubmit}
+            hapusPesanan={this.hapusPesanan}
             />
 
           </ListGroup>

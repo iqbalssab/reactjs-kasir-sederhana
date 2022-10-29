@@ -185,8 +185,25 @@
   ],
   "keranjangs": [
     {
-      "jumlah": 2,
-      "total_harga": 28000,
+      "jumlah": 1,
+      "total_harga": 16000,
+      "product": {
+        "id": 1,
+        "kode": "K-01",
+        "nama": "Sate Ayam",
+        "harga": 16000,
+        "is_ready": true,
+        "gambar": "sate-ayam.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      },
+      "id": 1
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 14000,
       "product": {
         "id": 2,
         "kode": "K-02",
@@ -199,7 +216,7 @@
           "nama": "Makanan"
         }
       },
-      "id": 1
+      "id": 2
     },
     {
       "jumlah": 1,
@@ -216,164 +233,8 @@
           "nama": "Makanan"
         }
       },
-      "id": 2
+      "id": 3
     }
   ],
-  "pesanans": [
-    {
-      "total_harga": 10000,
-      "menus": [
-        {
-          "jumlah": 1,
-          "total_harga": 10000,
-          "product": {
-            "id": 6,
-            "kode": "K-06",
-            "nama": "Bakso",
-            "harga": 10000,
-            "is_ready": true,
-            "gambar": "bakso.jpg",
-            "category": {
-              "id": 1,
-              "nama": "Makanan"
-            }
-          },
-          "id": 1
-        }
-      ],
-      "id": 1
-    },
-    {
-      "total_harga": 12000,
-      "menus": [
-        {
-          "jumlah": 1,
-          "total_harga": 12000,
-          "product": {
-            "id": 3,
-            "kode": "K-03",
-            "nama": "Nasi Rames",
-            "harga": 12000,
-            "is_ready": true,
-            "gambar": "nasi-rames.jpg",
-            "category": {
-              "id": 1,
-              "nama": "Makanan"
-            }
-          },
-          "id": 1
-        }
-      ],
-      "id": 2
-    },
-    {
-      "total_harga": 14000,
-      "menus": [
-        {
-          "jumlah": 1,
-          "total_harga": 14000,
-          "product": {
-            "id": 7,
-            "kode": "K-07",
-            "nama": "Mie Ayam Bakso",
-            "harga": 14000,
-            "is_ready": true,
-            "gambar": "mie-ayam-bakso.jpg",
-            "category": {
-              "id": 1,
-              "nama": "Makanan"
-            }
-          },
-          "id": 1
-        }
-      ],
-      "id": 3
-    },
-    {
-      "total_harga": 13000,
-      "menus": [
-        {
-          "jumlah": 1,
-          "total_harga": 13000,
-          "product": {
-            "id": 5,
-            "kode": "K-05",
-            "nama": "Mie Goreng",
-            "harga": 13000,
-            "is_ready": true,
-            "gambar": "mie-goreng.jpg",
-            "category": {
-              "id": 1,
-              "nama": "Makanan"
-            }
-          },
-          "id": 1
-        }
-      ],
-      "id": 4
-    },
-    {
-      "total_harga": 12000,
-      "menus": [
-        {
-          "jumlah": 1,
-          "total_harga": 12000,
-          "product": {
-            "id": 3,
-            "kode": "K-03",
-            "nama": "Nasi Rames",
-            "harga": 12000,
-            "is_ready": true,
-            "gambar": "nasi-rames.jpg",
-            "category": {
-              "id": 1,
-              "nama": "Makanan"
-            }
-          },
-          "id": 1
-        }
-      ],
-      "id": 5
-    },
-    {
-      "total_harga": 19000,
-      "menus": [
-        {
-          "jumlah": 1,
-          "total_harga": 14000,
-          "product": {
-            "id": 2,
-            "kode": "K-02",
-            "nama": "Nasi Goreng Telur",
-            "harga": 14000,
-            "is_ready": true,
-            "gambar": "nasi-goreng-telor.jpg",
-            "category": {
-              "id": 1,
-              "nama": "Makanan"
-            }
-          },
-          "id": 1
-        },
-        {
-          "jumlah": 1,
-          "total_harga": 5000,
-          "product": {
-            "id": 13,
-            "kode": "K-013",
-            "nama": "Es Teh",
-            "harga": 5000,
-            "is_ready": true,
-            "gambar": "es-teh.jpg",
-            "category": {
-              "id": 2,
-              "nama": "Minuman"
-            }
-          },
-          "id": 2
-        }
-      ],
-      "id": 6
-    }
-  ]
+  "pesanans": []
 }
