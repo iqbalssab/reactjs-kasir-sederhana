@@ -234,6 +234,40 @@
         }
       },
       "id": 3
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 15000,
+      "product": {
+        "id": 11,
+        "kode": "K-011",
+        "nama": "Coffe Late",
+        "harga": 15000,
+        "is_ready": true,
+        "gambar": "coffe-late.jpg",
+        "category": {
+          "id": 2,
+          "nama": "Minuman"
+        }
+      },
+      "id": 4
+    },
+    {
+      "jumlah": 1,
+      "total_harga": 14000,
+      "product": {
+        "id": 7,
+        "kode": "K-07",
+        "nama": "Mie Ayam Bakso",
+        "harga": 14000,
+        "is_ready": true,
+        "gambar": "mie-ayam-bakso.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      },
+      "id": 5
     }
   ],
   "pesanans": []

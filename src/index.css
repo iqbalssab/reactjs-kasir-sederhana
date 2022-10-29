@@ -15,9 +15,12 @@ code {
   color: white;
 }
 
-.menu-wrapper{
+.wadah{
   max-height: 60vh;
-  overflow: scroll;
+}
+
+.overflow-auto::-webkit-scrollbar{
+  display: none;
 }
 
 .list-menu{
@@ -28,4 +31,14 @@ code {
 .list-menu:hover{
   background-color: rgba(24, 28, 16, 0.14);
   cursor: pointer;
+}
+
+.navigasi{
+  background: rgb(9,147,4);
+background: linear-gradient(90deg, rgba(9,147,4,1) 0%, rgba(41,193,92,1) 47%, rgba(7,147,180,1) 100%);
+}
+
+.gambar {
+  color: white;
+  margin-right: 5px;
 }

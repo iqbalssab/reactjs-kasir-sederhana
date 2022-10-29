@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, ListGroup, Badge} from 'react-bootstrap'
+import {Row, Col, ListGroup, Badge, Card} from 'react-bootstrap'
 import { numberWithCommas } from '../utils/utils';
 import ModalKeranjang from './ModalKeranjang';
 import TotalBayar  from './TotalBayar';
@@ -121,7 +121,8 @@ export default class Hasil extends Component {
         <h4> <strong>Hasil</strong> </h4>
         <hr />
           {keranjangs.length !== 0 && (
-          <ListGroup variant="flush" className="menu-wrapper">
+            <Card className="wadah overflow-auto">
+          <ListGroup variant="flush" >
             {keranjangs.map((menuKeranjang) => (
             <ListGroup.Item key={menuKeranjang.id} onClick={() => this.handleShow(menuKeranjang)} className="list-menu">
             <Row>
@@ -156,6 +157,7 @@ export default class Hasil extends Component {
             />
 
           </ListGroup>
+          </Card>
 
           )}
 
