@@ -32,22 +32,28 @@ export default class Home extends Component {
       });
 
       // tampilkan di bagian hasil
-      axios
-      .get(API_URL + "keranjangs")
-      .then((res) => {
-        // handle success
-        const keranjangs = res.data;
-        this.setState({ keranjangs });
-      })
-      .catch((err) => {
-        // handle error
-        console.log(err);
-      });
+      this.getListKeranjang();
   }
 
+  
+  // componentDidUpdate(prevState){
+  //   if(this.state.keranjangs !== prevState.keranjangs){
+  //     axios
+  //     .get(API_URL + "keranjangs")
+  //     .then((res) => {
+  //       // handle success
+  //       const keranjangs = res.data;
+  //       this.setState({ keranjangs });
+  //     })
+  //     .catch((err) => {
+  //       // handle error
+  //       console.log(err);
+  //     });
+  //   }
+  // }
+
   // biar realtime perubahannya
-  componentDidUpdate(prevState){
-    if(this.state.keranjangs !== prevState.keranjangs){
+  getListKeranjang = () => {
       axios
       .get(API_URL + "keranjangs")
       .then((res) => {
@@ -59,8 +65,9 @@ export default class Home extends Component {
         // handle error
         console.log(err);
       });
-    }
+    
   }
+
 
   // ganti kategori sesuai yg di klik(antara makanan,minuman,ato cemilan)
   changeCategory = (value) => {
@@ -96,6 +103,7 @@ export default class Home extends Component {
           axios
             .post(API_URL + "keranjangs", keranjang)
             .then((res) => {
+              this.getListKeranjang();
               // handle success
               swal({
                 title: "Pesanan Masuk!",
@@ -153,7 +161,7 @@ export default class Home extends Component {
                 <hr />
                 <Row>{menus && menus.map((menu) => <Menus key={menu.id} menu={menu} masukKeranjang={this.masukKeranjang} />)}</Row>
               </Col>
-              <Hasil keranjangs={keranjangs} {...this.props} />
+              <Hasil keranjangs={keranjangs} {...this.props} getListKeranjang={this.getListKeranjang} />
             </Row>
           </Container>
         </div>

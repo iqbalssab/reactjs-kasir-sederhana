@@ -78,6 +78,7 @@ export default class Hasil extends Component {
     axios
       .put(API_URL + "keranjangs/"+this.state.keranjangDetail.id, data)
       .then((res) => {
+        this.props.getListKeranjang()
         // handle success
         swal({
           title: "Update Pesanan!",
@@ -95,13 +96,23 @@ export default class Hasil extends Component {
   
   // Ketika tombol save di klik
   hapusPesanan = (id) => {
-    
-    axios
+  
+    swal({
+      title: "Hapus Pesanan?",
+      text: this.state.keranjangDetail.product.nama + "Akan Dihapus Dari Pesanan",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        axios
       .delete(API_URL + "keranjangs/"+id)
       .then((res) => {
+        this.props.getListKeranjang()
         // handle success
         swal({
-          title: "Hapus Pesanan!",
+          title: "Pesanan Dihapus!",
           text: "Sukses Hapus Pesanan "+ this.state.keranjangDetail.product.nama,
           icon: "success",
         });
@@ -110,6 +121,12 @@ export default class Hasil extends Component {
         // handle error
         console.log(err);
       });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+
+    
 
       this.handleClose();
   }
